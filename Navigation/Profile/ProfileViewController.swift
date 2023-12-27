@@ -10,8 +10,18 @@ import UIKit
 class ProfileViewController : UIViewController {
     
     private lazy var subView : ProfileHeaderView = {
-        let view = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let view = ProfileHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private lazy var button: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Кнопка", for: .normal)
+        btn.backgroundColor = .systemBlue
+        btn.tintColor = .white
+        return btn
     }()
     
     override func viewDidLoad() {
@@ -20,11 +30,19 @@ class ProfileViewController : UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(subView)
         subView.backgroundColor = .white
+        self.view.addSubview(button)
         
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        subView.frame = super.view.frame
+        NSLayoutConstraint.activate([
+            subView.heightAnchor.constraint(equalToConstant: 220),
+            subView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            subView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            subView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            
+            button.heightAnchor.constraint(equalToConstant: 44),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+        
     }
 }
