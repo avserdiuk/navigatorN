@@ -11,21 +11,47 @@ class FeedViewController: UIViewController {
     
     private var post = Post(title: "My first post")
     
-    private lazy var button : UIButton = {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+    private lazy var button1 : UIButton = {
+        let btn = UIButton()
         btn.backgroundColor = .systemBlue
         btn.tintColor = .white
         btn.setTitle("Read the post", for: .normal)
         btn.addTarget(self, action: #selector(didTapBtn), for: .touchUpInside)
         return btn
     }()
+    
+    private lazy var button2 : UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .systemBlue
+        btn.tintColor = .white
+        btn.setTitle("Read the post", for: .normal)
+        btn.addTarget(self, action: #selector(didTapBtn), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var stackView : UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Feed"
         self.view.backgroundColor = .white
-        self.view.addSubview(button)
-        button.center = self.view.center
+        self.view.addSubview(stackView)
+        self.stackView.addArrangedSubview(button1)
+        self.stackView.addArrangedSubview(button2)
+       
+        
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 200),
+        ])
+        
     }
 
     @objc func didTapBtn(){
