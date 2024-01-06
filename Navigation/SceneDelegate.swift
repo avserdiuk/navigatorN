@@ -19,11 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.backgroundColor = .systemGray6
+        tabBarController.tabBar.barStyle = .default
         
         let controller1 = FeedViewController()
         controller1.tabBarItem.title = "Feed"
         controller1.tabBarItem.image = UIImage(systemName: "list.bullet")
-        let controller2 = ProfileViewController()
+        let controller2 = LogInViewController()
         controller2.tabBarItem.title = "Profile"
         controller2.tabBarItem.image = UIImage(systemName: "person")
         
