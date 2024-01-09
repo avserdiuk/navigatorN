@@ -43,12 +43,9 @@ class ProfileHeaderView : UIView {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.backgroundColor = UIColor.systemGray6
-        tf.layer.masksToBounds = true
-        tf.layer.cornerRadius = 10
-        tf.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         tf.placeholder = "set you status..."
         tf.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        tf.setPadding(left: 5)
+        tf.borderStyle = .roundedRect
         return tf
     }()
     
@@ -66,12 +63,8 @@ class ProfileHeaderView : UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        addSubview(avatarImageView)
-        addSubview(fullNameLabel)
-        addSubview(statusLabel)
-        addSubview(statusTextField)
-        addSubview(setStatusButton)
-        
+        backgroundColor = .white
+
         setup()
     }
     
@@ -80,6 +73,13 @@ class ProfileHeaderView : UIView {
     }
     
     func setup(){
+        
+        addSubview(avatarImageView)
+        addSubview(fullNameLabel)
+        addSubview(statusLabel)
+        addSubview(statusTextField)
+        addSubview(setStatusButton)
+        
         NSLayoutConstraint.activate([
             avatarImageView.widthAnchor.constraint(equalToConstant: 100),
             avatarImageView.heightAnchor.constraint(equalToConstant: 100),
@@ -101,6 +101,7 @@ class ProfileHeaderView : UIView {
             setStatusButton.leadingAnchor.constraint(equalTo: super.leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 44),
+            setStatusButton.bottomAnchor.constraint(equalTo: super.bottomAnchor, constant: -16)
             
         ])
     }

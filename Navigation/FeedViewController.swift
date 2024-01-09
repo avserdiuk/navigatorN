@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private var post = Post(title: "My first post")
+    //private var post = Post(title: "My first post")
     
     private lazy var button1 : UIButton = {
         let btn = UIButton()
@@ -56,7 +56,7 @@ class FeedViewController: UIViewController {
 
     @objc func didTapBtn(){
         let controller = PostViewController()
-        controller.title = post.title
+        //controller.title = post.title
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
