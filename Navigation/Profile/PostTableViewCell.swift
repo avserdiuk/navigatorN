@@ -81,9 +81,6 @@ class PostTableViewCell : UITableViewCell {
             views.topAnchor.constraint(equalTo: desc.bottomAnchor, constant: 16),
             views.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -16),
             views.bottomAnchor.constraint(equalTo: super.bottomAnchor, constant: -16),
-            
-            
-            
         ])
     }
     

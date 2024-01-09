@@ -83,10 +83,10 @@ class LogInViewController : UIViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-            let topPadding = window?.safeAreaInsets.top ?? 0
+//            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//            let topPadding = window?.safeAreaInsets.top ?? 0
             
-            let loginButtomBottomPoint = loginButton.frame.maxY + topPadding
+            let loginButtomBottomPoint = loginButton.frame.maxY //+ topPadding
             let keyboardOriginY = view.frame.height - keyboardHeight
             
             let yOffset = keyboardOriginY < loginButtomBottomPoint ? loginButtomBottomPoint - keyboardOriginY + 16 : 0
