@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 class ProfileViewController : UIViewController {
     
@@ -21,6 +22,7 @@ class ProfileViewController : UIViewController {
         super.viewDidLoad()
         self.title = "Profile"
         self.view.backgroundColor = .white
+        
         setupViews()
     }
     
@@ -49,7 +51,8 @@ extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return ProfileHeaderView()
+            let view = ProfileHeaderView()
+            return view
         }
         
         return nil
@@ -60,6 +63,16 @@ extension ProfileViewController : UITableViewDelegate {
         if indexPath.section == 0 {
             navigationController?.pushViewController(PhotosViewController(), animated: true)
         }
+    }
+    
+    @objc func didTapAvatar(){
+//        UIView.animate(withDuration: 2) {
+//            self.avatarImageView.center = self.superview!.center
+//
+//        }
+        
+        print("superview?.topAnchor")
+        
     }
 }
 

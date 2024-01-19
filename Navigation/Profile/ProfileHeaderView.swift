@@ -10,8 +10,28 @@ import UIKit
 class ProfileHeaderView : UIView {
     
     private var statusText : String = ""
+    private var avatarCenter : CGPoint = CGPoint()
     
-    private lazy var avatarImageView: UIImageView = {
+    private lazy var hiddenView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.isHidden = true
+        view.alpha = 0
+        return view
+    }()
+    
+    private lazy var closeImageView : UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "x.circle"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        imageView.alpha = 0
+        imageView.isUserInteractionEnabled = true
+        imageView.alpha = 0.7
+        return imageView
+    }()
+    
+    lazy var avatarImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.masksToBounds = true
@@ -19,6 +39,8 @@ class ProfileHeaderView : UIView {
         image.layer.cornerRadius = 50
         image.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         image.layer.borderWidth = 3
+        image.isUserInteractionEnabled = true
+        image.layer.zPosition = 1
         return image
     }()
     
@@ -61,15 +83,49 @@ class ProfileHeaderView : UIView {
         return btn
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
 
         setup()
+        
+        avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapAvatar)))
+        closeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapClose)))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func didTapAvatar(){
+        
+        self.hiddenView.isHidden = false
+        self.avatarCenter = avatarImageView.center
+        
+        let height = UIScreen.main.bounds.height
+        let width = UIScreen.main.bounds.width
+        
+        UIView.animate(withDuration: 1) {
+            self.avatarImageView.center = CGPoint(x: width/2, y: height/2)
+            self.avatarImageView.transform = CGAffineTransform(scaleX: width/100, y: width/100)
+            self.hiddenView.alpha = 0.6
+            self.avatarImageView.layer.cornerRadius = 0
+        } completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.closeImageView.alpha = 1
+                
+            }
+        }
+    }
+    
+    @objc func didTapClose(){
+        UIView.animate(withDuration: 1) {
+            self.avatarImageView.center = self.avatarCenter
+            self.avatarImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.avatarImageView.layer.cornerRadius = 50
+            self.hiddenView.alpha = 0.0
+        }
     }
     
     func setup(){
@@ -79,6 +135,9 @@ class ProfileHeaderView : UIView {
         addSubview(statusLabel)
         addSubview(statusTextField)
         addSubview(setStatusButton)
+        addSubview(hiddenView)
+        addSubview(closeImageView)
+        
         
         NSLayoutConstraint.activate([
             avatarImageView.widthAnchor.constraint(equalToConstant: 100),
@@ -101,7 +160,17 @@ class ProfileHeaderView : UIView {
             setStatusButton.leadingAnchor.constraint(equalTo: super.leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 44),
-            setStatusButton.bottomAnchor.constraint(equalTo: super.bottomAnchor, constant: -16)
+            setStatusButton.bottomAnchor.constraint(equalTo: super.bottomAnchor, constant: -16),
+            
+            hiddenView.topAnchor.constraint(equalTo: super.topAnchor),
+            hiddenView.leadingAnchor.constraint(equalTo: super.leadingAnchor),
+            hiddenView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height),
+            hiddenView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            
+            closeImageView.widthAnchor.constraint(equalToConstant: 30),
+            closeImageView.heightAnchor.constraint(equalToConstant: 27),
+            closeImageView.topAnchor.constraint(equalTo: super.topAnchor, constant: 20),
+            closeImageView.trailingAnchor.constraint(equalTo: super.trailingAnchor, constant: -20),
             
         ])
     }
