@@ -103,7 +103,26 @@ class LogInViewController : UIViewController {
     }
     
     @objc private func didTapLoginButton(){
-        navigationController?.pushViewController(ProfileViewController(), animated: true)
+        
+    #if DEBUG
+            let currentUser = TestUserService()
+    #else
+            let currentUser = CurrentUserService(
+                user: User(login: "Kot", fullName: "Sweet Kot", status: "Happy", avatar: UIImage())
+            )
+    #endif
+
+        if let result = currentUser.checkUser(login: "Kot") {
+            let controller = ProfileViewController()
+            controller.user = result
+            navigationController?.pushViewController(controller, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Внимание", message: "Не верный логин", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     @objc private func didTapView(){

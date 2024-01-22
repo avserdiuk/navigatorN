@@ -88,7 +88,7 @@ class ProfileHeaderView : UIView {
         super.init(frame: .zero)
         backgroundColor = .white
 
-        setup()
+        setupView()
         
         avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapAvatar)))
         closeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapClose)))
@@ -128,7 +128,12 @@ class ProfileHeaderView : UIView {
         }
     }
     
-    func setup(){
+    func setupUserInfo(user: User){
+        fullNameLabel.text = user.fullName
+        statusLabel.text = user.status
+    }
+    
+    func setupView(){
         
         addSubview(avatarImageView)
         addSubview(fullNameLabel)

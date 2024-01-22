@@ -10,6 +10,8 @@ import StorageService
 
 class ProfileViewController : UIViewController {
     
+    var user: User? = nil
+    
     private lazy var tableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +54,9 @@ extension ProfileViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let view = ProfileHeaderView()
+            if let user = user {
+                view.setupUserInfo(user: user)
+            }
             return view
         }
         
