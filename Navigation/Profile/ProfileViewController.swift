@@ -26,7 +26,7 @@ class ProfileViewController : UIViewController {
         setupViews()
     }
     
-    private func setupViews(){
+    func setupViews(){
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
