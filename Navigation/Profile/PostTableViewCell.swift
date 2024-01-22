@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell : UITableViewCell {
     
@@ -50,6 +51,8 @@ class PostTableViewCell : UITableViewCell {
         return label
     }()
     
+    private let processor = ImageProcessor()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -88,8 +91,16 @@ class PostTableViewCell : UITableViewCell {
     }
     
     func setup(post: Post){
+        
         autor.text = post.autor
-        image.image = UIImage(named: "\(post.image)")
+        
+        // получаем картинку и применяем к ней фильтр
+        if let image = UIImage(named: "\(post.image)") {
+            processor.processImage(sourceImage: image, filter: .process) { img in
+                self.image.image = img
+            }
+        }
+        
         desc.text = post.description
         likes.text = "Likes: \(post.likes)"
         views.text = "Views: \(post.views)"
