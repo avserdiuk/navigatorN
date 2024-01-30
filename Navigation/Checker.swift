@@ -21,12 +21,6 @@ class Checker {
     
     func check(login: String, password: String) -> Bool {
         
-//        if self.login == login && self.password == password {
-//            return true
-//        } else {
-//            return false
-//        }
-        
         self.login == login && self.password == password ? true : false
     }
 }

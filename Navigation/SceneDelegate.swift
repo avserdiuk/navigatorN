@@ -13,9 +13,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         #if DEBUG
             print("DEBUG SCHEME IS ON")
@@ -35,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         controller1.tabBarItem.title = "Feed"
         controller1.tabBarItem.image = UIImage(systemName: "list.bullet")
         let controller2 = LogInViewController()
-        //controller2.loginDelegate = LoginInspector()
+        controller2.loginDelegate = MyLoginFactory().makeLoginInspector()
         controller2.tabBarItem.title = "Profile"
         controller2.tabBarItem.image = UIImage(systemName: "person")
         
