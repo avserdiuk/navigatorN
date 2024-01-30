@@ -35,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         controller1.tabBarItem.title = "Feed"
         controller1.tabBarItem.image = UIImage(systemName: "list.bullet")
         let controller2 = LogInViewController()
+        //controller2.loginDelegate = LoginInspector()
         controller2.tabBarItem.title = "Profile"
         controller2.tabBarItem.image = UIImage(systemName: "person")
         

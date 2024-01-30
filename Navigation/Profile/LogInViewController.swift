@@ -9,6 +9,8 @@ import UIKit
 
 class LogInViewController : UIViewController {
     
+    var loginDelegate : LoginViewControllerDelegate? = nil
+    
     private lazy var scrollView : UIScrollView = {
         var scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -104,25 +106,34 @@ class LogInViewController : UIViewController {
     
     @objc private func didTapLoginButton(){
         
-    #if DEBUG
-            let currentUser = TestUserService()
-    #else
-            let currentUser = CurrentUserService(
-                user: User(login: "Kot", fullName: "Sweet Kot", status: "Happy", avatar: UIImage())
-            )
-    #endif
-
-        if let result = currentUser.checkUser(login: "Kot") {
+        #if DEBUG
+                let currentUser = TestUserService()
+        #else
+                let currentUser = CurrentUserService(
+                    user: User(login: "Kot", fullName: "Sweet Kot", status: "Happy", avatar: UIImage())
+                )
+        #endif
+        
+        guard let delegate = loginDelegate else {
+            print("Delegate not found")
+            return
+        }
+        
+        let login = loginTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        let checkResult = delegate.check(login: login, password: password)
+        
+        if checkResult {
             let controller = ProfileViewController()
-            controller.user = result
+            controller.user = currentUser.user
             navigationController?.pushViewController(controller, animated: true)
         } else {
-            let alert = UIAlertController(title: "Внимание", message: "Не верный логин", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Внимание", message: "Не верный логин или пароль", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        
+
     }
     
     @objc private func didTapView(){
