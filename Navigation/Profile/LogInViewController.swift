@@ -107,8 +107,13 @@ class LogInViewController : UIViewController {
     @objc private func didTapLoginButton(){
         
         #if DEBUG
+                let login = "Kot"
+                let password = "qwerty"
                 let currentUser = TestUserService()
         #else
+        
+                let login = loginTextField.text ?? ""
+                let password = passwordTextField.text ?? ""
                 let currentUser = CurrentUserService(
                     user: User(login: "Kot", fullName: "Sweet Kot", status: "Happy", avatar: UIImage())
                 )
@@ -118,9 +123,6 @@ class LogInViewController : UIViewController {
             print("Delegate not found")
             return
         }
-        
-        let login = loginTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
         
         let checkResult = delegate.check(login: login, password: password)
         

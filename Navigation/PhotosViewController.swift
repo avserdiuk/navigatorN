@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import iOSIntPackage
 
-class PhotosViewController : UIViewController {
+class PhotosViewController : UIViewController, ImageLibrarySubscriber  {
     
     private lazy var layout : UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -28,6 +29,8 @@ class PhotosViewController : UIViewController {
         return collection
     }()
     
+    let imagePublisherFacade = ImagePublisherFacade()
+    var images : [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +49,27 @@ class PhotosViewController : UIViewController {
             
         ])
         
+        imagePublisherFacade.subscribe(self)
+        imagePublisherFacade.addImagesWithTimer(time: 1, repeat: 15)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        imagePublisherFacade.removeSubscription(for: self)
+    }
+    
+}
+
+extension PhotosViewController {
+    func receive(images: [UIImage]) {
+        self.images = images
+        self.collection.reloadData()
     }
 }
 
 extension PhotosViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        15
+        self.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
