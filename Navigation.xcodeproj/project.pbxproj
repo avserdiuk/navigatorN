@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3BD0C32B7648FF0022DF57 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BD0C22B7648FF0022DF57 /* Presenter.swift */; };
+		0F3BD0C52B76497C0022DF57 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BD0C42B76497C0022DF57 /* View.swift */; };
+		0F3BD0C72B7652B10022DF57 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BD0C62B7652B10022DF57 /* Assembly.swift */; };
+		0F3BD0C92B769CA90022DF57 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BD0C82B769CA90022DF57 /* Model.swift */; };
+		0F43AD662B738807005706F0 /* MVVM .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F43AD652B738807005706F0 /* MVVM .swift */; };
+		0F43AD692B74D32B005706F0 /* MVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F43AD672B74D03A005706F0 /* MVP.swift */; };
+		0FC68D4E2B721ADE00AB631D /* SmartViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC68D4D2B721ADE00AB631D /* SmartViews.swift */; };
 		4128CD702B30AD5D001B8BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128CD6F2B30AD5D001B8BFE /* AppDelegate.swift */; };
 		4128CD722B30AD5D001B8BFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128CD712B30AD5D001B8BFE /* SceneDelegate.swift */; };
 		4128CD742B30AD5D001B8BFE /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128CD732B30AD5D001B8BFE /* FeedViewController.swift */; };
@@ -56,6 +63,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F3BD0C22B7648FF0022DF57 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		0F3BD0C42B76497C0022DF57 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		0F3BD0C62B7652B10022DF57 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		0F3BD0C82B769CA90022DF57 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0F43AD652B738807005706F0 /* MVVM .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MVVM .swift"; sourceTree = "<group>"; };
+		0F43AD672B74D03A005706F0 /* MVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVP.swift; sourceTree = "<group>"; };
+		0FC68D4D2B721ADE00AB631D /* SmartViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartViews.swift; sourceTree = "<group>"; };
 		4128CD6C2B30AD5D001B8BFE /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4128CD6F2B30AD5D001B8BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4128CD712B30AD5D001B8BFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +114,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F3BD0C02B7648710022DF57 /* FeedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BD0C82B769CA90022DF57 /* Model.swift */,
+				4128CD732B30AD5D001B8BFE /* FeedViewController.swift */,
+				0F3BD0C42B76497C0022DF57 /* View.swift */,
+				0F3BD0C22B7648FF0022DF57 /* Presenter.swift */,
+				0F3BD0C62B7652B10022DF57 /* Assembly.swift */,
+			);
+			path = FeedScreen;
+			sourceTree = "<group>";
+		};
+		0F3BD0C12B7648930022DF57 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				419C49072B692406005D07C2 /* LoginFactory.swift */,
+				419C49052B68FDBE005D07C2 /* Checker.swift */,
+				4141E9F02B5EE6DC00D49D8F /* UserService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F43AD632B7387E1005706F0 /* Application Layer */ = {
+			isa = PBXGroup;
+			children = (
+				4128CD6F2B30AD5D001B8BFE /* AppDelegate.swift */,
+				4128CD712B30AD5D001B8BFE /* SceneDelegate.swift */,
+			);
+			path = "Application Layer";
+			sourceTree = "<group>";
+		};
+		0F43AD642B7387F0005706F0 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				0F43AD652B738807005706F0 /* MVVM .swift */,
+				0F43AD672B74D03A005706F0 /* MVP.swift */,
+			);
+			path = Playgrounds;
+			sourceTree = "<group>";
+		};
+		0FC68D4C2B721AD200AB631D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0FC68D4D2B721ADE00AB631D /* SmartViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4128CD632B30AD5D001B8BFE = {
 			isa = PBXGroup;
 			children = (
@@ -121,26 +183,25 @@
 		4128CD6E2B30AD5D001B8BFE /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				4128CD6F2B30AD5D001B8BFE /* AppDelegate.swift */,
-				4128CD712B30AD5D001B8BFE /* SceneDelegate.swift */,
-				4161A8DD2B332F4C00FA1C30 /* Profile */,
-				4164E2972B4D6EC000AA20D5 /* PhotosViewController.swift */,
-				4128CD732B30AD5D001B8BFE /* FeedViewController.swift */,
-				4128CD872B30B143001B8BFE /* PostViewController.swift */,
-				4128CD892B30B3DC001B8BFE /* InfoViewController.swift */,
-				4128CD7D2B30AD5E001B8BFE /* Info.plist */,
+				0F43AD642B7387F0005706F0 /* Playgrounds */,
+				0F43AD632B7387E1005706F0 /* Application Layer */,
+				4161A8DD2B332F4C00FA1C30 /* ProfileScreen */,
+				0F3BD0C02B7648710022DF57 /* FeedScreen */,
+				0F3BD0C12B7648930022DF57 /* Model */,
+				0FC68D4C2B721AD200AB631D /* Views */,
 				4161A8E02B38A3ED00FA1C30 /* Assets.xcassets */,
 				4128CD7A2B30AD5E001B8BFE /* LaunchScreen.storyboard */,
-				4141E9F02B5EE6DC00D49D8F /* UserService.swift */,
-				419C49072B692406005D07C2 /* LoginFactory.swift */,
-				419C49052B68FDBE005D07C2 /* Checker.swift */,
+				4128CD7D2B30AD5E001B8BFE /* Info.plist */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		4161A8DD2B332F4C00FA1C30 /* Profile */ = {
+		4161A8DD2B332F4C00FA1C30 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				4128CD872B30B143001B8BFE /* PostViewController.swift */,
+				4128CD892B30B3DC001B8BFE /* InfoViewController.swift */,
+				4164E2972B4D6EC000AA20D5 /* PhotosViewController.swift */,
 				4161A8DE2B332F5C00FA1C30 /* ProfileHeaderView.swift */,
 				4128CD832B30AEB1001B8BFE /* ProfileViewController.swift */,
 				41FDF50B2B498BE800683739 /* LogInViewController.swift */,
@@ -148,7 +209,7 @@
 				41FDF50D2B4C755C00683739 /* PostTableViewCell.swift */,
 				4164E2932B4D552E00AA20D5 /* PhotosTableViewCell.swift */,
 			);
-			path = Profile;
+			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
 		41D904192B5A60DC00C87E1F /* StorageService */ = {
@@ -222,7 +283,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					4128CD6B2B30AD5D001B8BFE = {
 						CreatedOnToolsVersion = 14.3;
@@ -278,19 +339,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC68D4E2B721ADE00AB631D /* SmartViews.swift in Sources */,
 				4164E2942B4D552E00AA20D5 /* PhotosTableViewCell.swift in Sources */,
 				4164E2982B4D6EC000AA20D5 /* PhotosViewController.swift in Sources */,
 				4128CD882B30B143001B8BFE /* PostViewController.swift in Sources */,
 				4128CD742B30AD5D001B8BFE /* FeedViewController.swift in Sources */,
 				41FDF50C2B498BE800683739 /* LogInViewController.swift in Sources */,
 				419C49062B68FDBE005D07C2 /* Checker.swift in Sources */,
+				0F43AD692B74D32B005706F0 /* MVP.swift in Sources */,
 				4128CD702B30AD5D001B8BFE /* AppDelegate.swift in Sources */,
 				4141E9F12B5EE6DC00D49D8F /* UserService.swift in Sources */,
+				0F3BD0C72B7652B10022DF57 /* Assembly.swift in Sources */,
 				4128CD8A2B30B3DC001B8BFE /* InfoViewController.swift in Sources */,
 				4128CD842B30AEB1001B8BFE /* ProfileViewController.swift in Sources */,
+				0F3BD0C52B76497C0022DF57 /* View.swift in Sources */,
 				4164E2962B4D59B100AA20D5 /* CustomCollectionViewCell.swift in Sources */,
 				4128CD722B30AD5D001B8BFE /* SceneDelegate.swift in Sources */,
+				0F3BD0C32B7648FF0022DF57 /* Presenter.swift in Sources */,
+				0F43AD662B738807005706F0 /* MVVM .swift in Sources */,
 				41FDF50E2B4C755C00683739 /* PostTableViewCell.swift in Sources */,
+				0F3BD0C92B769CA90022DF57 /* Model.swift in Sources */,
 				4161A8DF2B332F5C00FA1C30 /* ProfileHeaderView.swift in Sources */,
 				419C49082B692406005D07C2 /* LoginFactory.swift in Sources */,
 			);
@@ -362,6 +430,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -422,6 +491,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -497,6 +567,7 @@
 		41D904212B5A60DC00C87E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -530,6 +601,7 @@
 		41D904222B5A60DC00C87E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

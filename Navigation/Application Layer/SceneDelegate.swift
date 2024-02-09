@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.tabBar.barStyle = .default
         
-        let controller1 = FeedViewController()
+        let controller1 = FeedAssembly().make()
         controller1.tabBarItem.title = "Feed"
         controller1.tabBarItem.image = UIImage(systemName: "list.bullet")
         let controller2 = LogInViewController()
