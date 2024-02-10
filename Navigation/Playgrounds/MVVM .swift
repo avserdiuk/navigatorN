@@ -70,7 +70,7 @@ class GreetingViewController : UIViewController {
     
     @objc
     func didTapButton(sender: UIButton){
-        
+        viewModel.showGreeting()
     }
 }
 
