@@ -16,6 +16,7 @@ protocol FeedViewProtocol : AnyObject {
 class FeedViewController: UIViewController, FeedViewProtocol {
     
     var presenter: FeedPresenterProtocol!
+    var coordinator: FeedCoordinator?
     
     override func loadView() {
         self.view = FeedMainView()
@@ -42,7 +43,7 @@ class FeedViewController: UIViewController, FeedViewProtocol {
     }
     
     func showPostViewController(){
-        self.navigationController?.pushViewController(PostViewController(), animated: true)
+        coordinator?.showPostScreen()
     }
     
     func updateResult(result: Bool){

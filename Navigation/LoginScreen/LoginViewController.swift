@@ -20,6 +20,8 @@ class LogInViewController : UIViewController, LoginViewProtocol {
         }
     }
     
+    var coordinator: LoginCoordinator?
+    
     override func loadView() {
         view = LoginView()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
@@ -60,10 +62,8 @@ class LogInViewController : UIViewController, LoginViewProtocol {
             self.present(alert, animated: true, completion: nil)
             return
         }
-
-            let controller = ProfileViewController()
-            controller.user = user
-            navigationController?.pushViewController(controller, animated: true)
+        
+        coordinator?.showProfileScreen(user: user)
     }
     
     func addNotifications(){
