@@ -20,7 +20,7 @@ class LogInViewController : UIViewController, LoginViewProtocol {
         }
     }
     
-    var coordinator: LoginCoordinator?
+    weak var coordinator: LoginCoordinator?
     
     override func loadView() {
         view = LoginView()

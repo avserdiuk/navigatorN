@@ -16,7 +16,7 @@ protocol FeedViewProtocol : AnyObject {
 class FeedViewController: UIViewController, FeedViewProtocol {
     
     var presenter: FeedPresenterProtocol!
-    var coordinator: FeedCoordinator?
+    weak var coordinator: FeedCoordinator?
     
     override func loadView() {
         self.view = FeedMainView()

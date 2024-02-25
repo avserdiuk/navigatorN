@@ -10,7 +10,7 @@ import UIKit
 
 class LoginCoordinator : Coordinator {
     var childs: [Coordinator] = []
-    var transitionHandler: UINavigationController
+    weak var transitionHandler: UINavigationController?
     
     init(transitionHandler: UINavigationController) {
         self.transitionHandler = transitionHandler
@@ -23,7 +23,7 @@ class LoginCoordinator : Coordinator {
     func showProfileScreen(user: User) {
         let controller = ProfileViewController()
         controller.user = user
-        transitionHandler.pushViewController(controller, animated: true)
+        transitionHandler?.pushViewController(controller, animated: true)
     }
 }
 

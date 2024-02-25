@@ -10,7 +10,7 @@ import UIKit
 
 class FeedCoordinator : Coordinator {
     var childs: [Coordinator] = []
-    var transitionHandler: UINavigationController
+    weak var transitionHandler: UINavigationController?
     
     init(transitionHandler: UINavigationController) {
         self.transitionHandler = transitionHandler
@@ -21,6 +21,6 @@ class FeedCoordinator : Coordinator {
     }
     
     func showPostScreen() {
-        transitionHandler.pushViewController(PostViewController(), animated: true)
+        transitionHandler?.pushViewController(PostViewController(), animated: true)
     }
 }

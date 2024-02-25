@@ -39,4 +39,8 @@ class CustomCollectionViewCell : UICollectionViewCell {
     func setupImage(name: String){
         image.image = UIImage(named: "\(name)")
     }
+    
+    func setup(image: UIImage){
+        self.image.image = image
+    }
 }
