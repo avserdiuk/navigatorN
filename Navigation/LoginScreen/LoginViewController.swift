@@ -34,6 +34,10 @@ class LogInViewController : UIViewController, LoginViewProtocol {
         view().loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         addNotifications()
         
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(didTapLoginButton), userInfo: nil, repeats: false)
+    
+       
+        
     }
     
     private func view() -> LoginView {
