@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginViewControllerDelegate {
-    func check(login: String, password: String) -> Bool
+    func checkResult(login: String, password: String, complition: @escaping (Result<Bool, LoginAuthErrors>)-> Void)
 }
 
 class Checker {
@@ -27,7 +27,13 @@ class Checker {
 
 
 struct LoginInspector : LoginViewControllerDelegate {
-    func check(login: String, password: String) -> Bool {
-        Checker.shared.check(login: login, password: password) ? true : false
+    
+    func checkResult(login: String, password: String, complition: @escaping (Result<Bool, LoginAuthErrors>)-> Void) {
+        guard Checker.shared.check(login: login, password: password) else {
+            complition(.failure(.incorrectAccesses))
+            return
+        }
+        
+        complition(.success(true))
     }
 }

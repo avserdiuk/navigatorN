@@ -15,7 +15,7 @@ class LogInViewController : UIViewController, LoginViewProtocol {
     var viewModel: LoginViewModelProtocol! {
         didSet {
             self.viewModel.check = { [weak self] viewModel in
-                self?.result(checkResult: viewModel.result!, user: viewModel.user)
+                self?.coordinator?.showProfileScreen(user: viewModel.user)
             }
         }
     }
@@ -35,8 +35,6 @@ class LogInViewController : UIViewController, LoginViewProtocol {
         addNotifications()
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(didTapLoginButton), userInfo: nil, repeats: false)
-    
-       
         
     }
     
@@ -54,20 +52,21 @@ class LogInViewController : UIViewController, LoginViewProtocol {
                 let password = view().passwordTextField.text ?? ""
         #endif
         
-        self.viewModel.checkAccess(login, password)
+        do {
+            try self.viewModel.checkAccess(login, password)
+        } catch LoginAuthErrors.incorrectAccesses {
+            showErrorAlert()
+        } catch {
+            print(error)
+        }
         
     }
     
-    func result(checkResult: Bool, user: User){
-        
-        guard checkResult else {
-            let alert = UIAlertController(title: "Внимание", message: "Не верный логин или пароль", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-        
-        coordinator?.showProfileScreen(user: user)
+    func showErrorAlert(){
+        let alert = UIAlertController(title: "Внимание", message: "Не верный логин или пароль", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+        return
     }
     
     func addNotifications(){

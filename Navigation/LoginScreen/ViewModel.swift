@@ -12,7 +12,7 @@ protocol LoginViewModelProtocol : AnyObject{
     var result: Bool? { get set }
     var check: ((LoginViewModelProtocol) -> ())? { get set }
     
-    func checkAccess(_ login: String, _ password: String)
+    func checkAccess(_ login: String, _ password: String) throws
 }
 
 class LoginViewModel : LoginViewModelProtocol {
@@ -31,9 +31,23 @@ class LoginViewModel : LoginViewModelProtocol {
     
     var check: ((LoginViewModelProtocol) -> ())?
     
-    func checkAccess(_ login: String, _ password: String){
+    func checkAccess(_ login: String, _ password: String) throws {
         
-        let checkResult = LoginInspector().check(login: login, password: password)
-        result = checkResult
+        var err: LoginAuthErrors = .other
+        
+        LoginInspector().checkResult(login: login, password: password) { result in
+            switch result {
+                case .success(let result):
+                    self.result = result
+                case .failure(let error):
+                    err = .incorrectAccesses
+            }
+        }
+        
+        guard err == .incorrectAccesses else {
+            return
+        }
+        throw LoginAuthErrors.incorrectAccesses
+    
     }
 }
