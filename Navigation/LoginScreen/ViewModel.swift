@@ -39,7 +39,7 @@ class LoginViewModel : LoginViewModelProtocol {
             switch result {
                 case .success(let result):
                     self.result = result
-                case .failure(let error):
+                case .failure(_):
                     err = .incorrectAccesses
             }
         }

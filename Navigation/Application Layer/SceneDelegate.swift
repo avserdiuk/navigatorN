@@ -25,6 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+//        let url = ["https://swapi.dev/api/people/8", "https://swapi.dev/api/starships/3", "https://swapi.dev/api/planets/5"]
+//        
+//        let appConfiguration: AppConfiguration = AppConfiguration.first(url[Int.random(in: 0...2)])
+//        NetworkManager.request(for: appConfiguration)
+        
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.tabBar.barStyle = .default
@@ -38,6 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         coordinator.start()
     }
+    
 
 }
 
