@@ -45,9 +45,17 @@ class AppCoordinator : Coordinator {
         controller2.coordinator = loginCoordinator
         loginCoordinator.start()
         
+        let controller3 = MediaViewController()
+            controller3.tabBarItem.title = "Media"
+            controller3.tabBarItem.image = UIImage(systemName: "play")
+        
+        let mediaTransitionHandler = UINavigationController(rootViewController: controller3)
+        
+        
         transitionHandler.viewControllers = [
             feedTransitionHandler,
-            loginTransitionHandler
+            loginTransitionHandler,
+            mediaTransitionHandler
         ]
         
         self.childs.append(feedCoordinator)

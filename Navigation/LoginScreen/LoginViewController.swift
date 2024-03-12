@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 protocol LoginViewProtocol : AnyObject{
     
@@ -85,7 +86,11 @@ class LogInViewController : UIViewController, LoginViewProtocol {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.filter {$0.isKeyWindow}.first
+            
+            //let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
             let topPadding = window?.safeAreaInsets.top ?? 0
             
             let loginButtomBottomPoint = view().loginButton.frame.maxY + topPadding
